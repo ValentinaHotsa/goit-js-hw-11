@@ -1,0 +1,40 @@
+/* Reset */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.is-hidden {
+    visibility: hidden;
+}
+img {
+    display: block;
+    max-width: 100%;
+    border-radius: 15px;
+
+}
+.gallery{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+.info{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+.photo-card{
+    width: 400px;
+    height: 400px;
+}

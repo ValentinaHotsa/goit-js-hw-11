@@ -35,7 +35,7 @@ async function search(userSearch) {
     orientation: 'horizontal',
     safesearch: true,
     q: userSearch,
-    per_page: '100',
+    per_page: '40',
     page: numberPage,
   });
 

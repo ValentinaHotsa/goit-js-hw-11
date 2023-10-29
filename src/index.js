@@ -19,6 +19,7 @@ const cklbckEvent = evt => {
   if (inputValue !== input.value) {
     gallery.innerHTML = '';
     numberPage = 1;
+    numberImg = 0;
     search(input.value);
   }
   inputValue = input.value;
@@ -41,10 +42,9 @@ async function search(userSearch) {
 
   try {
     const response = await axios.get(`${BASE_URL}?${parameters}`);
-    console.log(response);
     numberImg += response.data.hits.length;
 
-    if (response.status !== 200) {
+    if (response.data.hits.length == 0) {
       throw new Error(response.status);
     }
     const result = await response.data.hits
@@ -83,14 +83,14 @@ async function search(userSearch) {
       .join('');
     gallery.insertAdjacentHTML('beforeend', result);
     numberPage += 1;
-    new SimpleLightbox('.gallery a', {
+    const qwe = new SimpleLightbox('.gallery a', {
       captionsData: 'alt',
       captionDelay: '250ms',
     });
+    qwe.refresh();
     if (numberPage > 1) {
       buttonLoadMore.classList.remove('is-hidden');
     }
-    console.log(numberImg, Number(response.data.totalHits));
     if (numberImg >= Number(response.data.totalHits)) {
       buttonLoadMore.classList.add('is-hidden');
       Notiflix.Notify.info(
